@@ -10,13 +10,15 @@ This repository contains my replication of the Django to-do application for clas
    .venv\Scripts\activate
 
 2. Install dependencies
+   ```powershell
    pip install -r requirements.txt
 
-3. Run the server
+4. Run the server
+   ```powershell
    python manage.py migrate
    python manage.py runserver
    
-4. Visit http:127.0.0.1:8000 in your browser
+6. Visit http:127.0.0.1:8000 in your browser
 
 ## Development Stack (Description and Evidence)
 #Environment
