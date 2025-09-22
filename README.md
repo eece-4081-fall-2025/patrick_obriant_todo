@@ -21,7 +21,7 @@ This repository contains my replication of the Django to-do application for clas
 6. Visit http:127.0.0.1:8000 in your browser
 
 ## Development Stack (Description and Evidence)
-#Environment
+Environment
 OS: Windows 11 Home 64-bit
 IDE: Visual Studio Code
 Python version: 3.13
