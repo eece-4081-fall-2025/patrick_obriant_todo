@@ -1,0 +1,46 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8">
+    <title>To-Do List</title>
+  </head>
+  <body>
+    <h1>My Tasks</h1>
+
+    <form method="post" action="{% url 'task-create' %}">
+      {% csrf_token %}
+      <input name="title" placeholder="Task title" required>
+      <input name="notes" placeholder="Notes">
+      <button type="submit">Add Task</button>
+    </form>
+
+    <ul>
+      {% for t in tasks %}
+        <li>
+          <form method="post" action="{% url 'task-update' t.pk %}" style="display:inline">
+            {% csrf_token %}
+            <input name="title" value="{{ t.title }}">
+            <input name="notes" value="{{ t.notes }}">
+            <button type="submit">Save</button>
+          </form>
+
+          {% if t.completed %}<strong>(done)</strong>{% endif %}
+
+          <form method="post" action="{% url 'task-toggle' t.pk %}" style="display:inline">
+            {% csrf_token %}
+            <button type="submit">
+              {% if t.completed %}Uncomplete{% else %}Complete{% endif %}
+            </button>
+          </form>
+
+          <form method="post" action="{% url 'task-delete' t.pk %}" style="display:inline">
+            {% csrf_token %}
+            <button type="submit">Delete</button>
+          </form>
+        </li>
+      {% empty %}
+        <li>No tasks yet.</li>
+      {% endfor %}
+    </ul>
+  </body>
+</html>
