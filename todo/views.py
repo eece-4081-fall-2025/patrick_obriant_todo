@@ -25,3 +25,18 @@ def task_update(request, pk):
     task.save()
     return redirect("task-list")
 
+def task_toggle(request, pk):
+    if request.method != "POST":
+        return HttpResponseNotAllowed(["POST"])
+    task = get_object_or_404(Task, pk=pk)
+    task.completed = not task.completed
+    task.save()
+    return redirect("task-list")
+
+
+def task_delete(request, pk):
+    if request.method != "POST":
+        return HttpResponseNotAllowed(["POST"])
+    task = get_object_or_404(Task, pk=pk)
+    task.delete()
+    return redirect("task-list")
